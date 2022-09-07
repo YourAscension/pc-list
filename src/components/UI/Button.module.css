@@ -1,0 +1,42 @@
+button {
+    display: flex;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+button + button {
+    margin-left: 5px;
+}
+
+
+.close > svg{
+    fill: red;
+
+}
+.close:hover {
+    background-color: red;
+}
+
+.close:hover svg {
+
+    fill: white;
+
+}
+
+.link > svg{
+    fill: #0B5AA2;
+
+}
+
+.link:hover {
+    background-color: #0B5AA2;
+}
+
+.link:hover svg {
+
+    fill: white;
+
+}
