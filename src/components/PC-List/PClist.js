@@ -9,13 +9,27 @@ function PClist(props) {
 				<p>Комплектующие</p>
 				<hr/>
 				<div className={styles.itemsBody}>
-					{items.map((item) => <PCItem item={item}/>)}
+					{
+						items.length > 0
+							?
+							items.map((item) => <PCItem item={item}/>)
+							:
+							(<div className={styles.itemsNone}>Комплектующие отсутствуют</div>)}
 				</div>
 				<hr/>
 				<div className={styles.totalContainer}>
-					<div className={styles.totalText}>
-						Итого: {items.reduce((prev, current) => prev + current.price * current.count, 0)} рублей
-					</div>
+					{
+						items.length > 0 && (items.find((item) => item.checked === true) &&
+							(<div className={styles.totalText}>
+								Итого: {
+								items.reduce((totalPrice, item) => {
+									if (item.checked === true) {
+										return totalPrice + (item.price * item.count)
+									}
+									return totalPrice;
+								}, 0)} рублей
+							</div>)|| <div className={styles.totalText} style={{fontSize: '15px',}}>Выберите хотя бы одну позицию</div> )
+					}
 				</div>
 			</div>
 		</div>

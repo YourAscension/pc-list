@@ -6,7 +6,7 @@ const PCItem = (props) => {
 	return <>
 		<div className={styles.item}>
 			<div className={styles.itemTitle}>
-				<input className={styles.itemCheckbox} type="checkbox"/>
+				<input className={styles.itemCheckbox} type="checkbox" checked={item.checked}/>
 				<img className={styles.itemTitleImg} src={item.img} alt="logo"/>
 				<div>
 					<div className={styles.itemTitleText}>{item.title}</div>

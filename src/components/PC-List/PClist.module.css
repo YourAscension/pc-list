@@ -13,6 +13,12 @@
     width: 1000px;
 }
 
+.itemsNone {
+    text-align: center;
+    margin: 100px 0;
+    font-size: 30px;
+    font-weight: bold;
+}
 
 .itemsHead {
     background-color: white;
