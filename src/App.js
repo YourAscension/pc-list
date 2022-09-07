@@ -9,7 +9,7 @@ function App() {
     title: 'Видеокарта RTX 3070',
     category: 'Видеокарта',
     img: 'https://ae04.alicdn.com/kf/S80bad2bec76944ffab59cb904048dc3eW/MSI-GeForce-RTX-3070-VENTUS-2X-8G-3070-GAMING-Z-TRIO-8G-256.jpg',
-    checked: false,
+    checked: true,
     count: 1,
     price: 1000,
   },
@@ -32,9 +32,12 @@ function App() {
       price: 666,
     }])
 
+  const changeItemHandle = (innerItem) => {
+    setItems([...items.filter((item)=> item.id !== innerItem.id), innerItem])
+  }
   return (
-    <div className="App">
-      <PCList items = {items} />
+    <div className="App" >
+      <PCList items = {items} changeItemHandle={changeItemHandle} />
     </div>
   );
 }

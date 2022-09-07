@@ -2,7 +2,7 @@ import PCItem from "./PCItem";
 import styles from "./PClist.module.css"
 
 function PClist(props) {
-	const {items} = props;
+	const {items, changeItemHandle} = props;
 	return <div className={styles.container}>
 		<div className={styles.items}>
 			<div className={styles.itemsHead}>
@@ -12,7 +12,7 @@ function PClist(props) {
 					{
 						items.length > 0
 							?
-							items.map((item) => <PCItem item={item}/>)
+							items.map((item) => <PCItem key={item.id} item={item} changeItemHandle={changeItemHandle}/>)
 							:
 							(<div className={styles.itemsNone}>Комплектующие отсутствуют</div>)}
 				</div>
