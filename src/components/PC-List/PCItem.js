@@ -3,19 +3,27 @@ import Button from "../UI/Button";
 import styles from "./PCItem.module.css"
 
 const PCItem = (props) => {
-	const {item, changeItemHandle} = props;
+	const {item, changeItemHandler} = props;
 
 	const [fullCost, setFullCost] = react.useState({price: item.price, count: item.count})
 	const [checkedPosition, setCheckedPosition] = react.useState(item.checked)
 
-	const checkedHandle = (check) => {
+	const checkboxHandle = (check) => {
 		setCheckedPosition(check);
-		 changeItemHandle({...item, checked: check})
+		changeItemHandler({...item, checked: check})
 	}
+
+	const fullCostHandle=(inputType, newValue)=> {
+		setFullCost({...fullCost, [inputType]: newValue})
+		changeItemHandler({...item, [inputType]: newValue})
+	}
+
+
 	return <>
 		<div className={styles.item}>
 			<div className={styles.itemTitle}>
-				<input className={styles.itemCheckbox} type="checkbox" onChange={()=>checkedHandle(!checkedPosition)}  checked={checkedPosition}/>
+				<input className={styles.itemCheckbox} type="checkbox" onChange={() => checkboxHandle(!checkedPosition)}
+							 checked={checkedPosition}/>
 				<img className={styles.itemTitleImg} src={item.img} alt="logo"/>
 				<div>
 					<div className={styles.itemTitleText}>{item.title}</div>
@@ -24,12 +32,14 @@ const PCItem = (props) => {
 			</div>
 			<div className={styles.controlsContainer}>
 				<div className={styles.controls}>
-					<label><input type="number" onChange={(e)=>setFullCost({...fullCost, price: e.target.value})} value={fullCost.price}/> руб.</label>
-					<label><input type="number" onChange={(e)=>setFullCost({...fullCost, count: e.target.value})}  value={fullCost.count}/> шт.</label>
+					<label><input type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
+												value={fullCost.price}/> руб.</label>
+					<label><input type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
+												value={fullCost.count}/> шт.</label>
 				</div>
 				<div className={styles.buttons}>
-				<Button type="link" title ="Перейти по ссылке"/>
-				<Button type="close" title ="Удалить позицию"/>
+					<Button type="link" title="Перейти по ссылке"/>
+					<Button type="close" title="Удалить позицию"/>
 				</div>
 			</div>
 		</div>

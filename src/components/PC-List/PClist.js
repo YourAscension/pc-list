@@ -2,7 +2,7 @@ import PCItem from "./PCItem";
 import styles from "./PClist.module.css"
 
 function PClist(props) {
-	const {items, changeItemHandle} = props;
+	const {items, changeItemHandler} = props;
 	return <div className={styles.container}>
 		<div className={styles.items}>
 			<div className={styles.itemsHead}>
@@ -12,7 +12,7 @@ function PClist(props) {
 					{
 						items.length > 0
 							?
-							items.map((item) => <PCItem key={item.id} item={item} changeItemHandle={changeItemHandle}/>)
+							items.map((item) => <PCItem key={item.id} item={item} changeItemHandler={changeItemHandler}/>)
 							:
 							(<div className={styles.itemsNone}>Комплектующие отсутствуют</div>)}
 				</div>
@@ -28,7 +28,7 @@ function PClist(props) {
 									}
 									return totalPrice;
 								}, 0)} рублей
-							</div>)|| <div className={styles.totalText} style={{fontSize: '15px',}}>Выберите хотя бы одну позицию</div> )
+							</div>)|| <div className={styles.totalText}>Выберите хотя бы одну позицию</div> )
 					}
 				</div>
 			</div>
