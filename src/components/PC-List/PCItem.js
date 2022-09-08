@@ -3,20 +3,21 @@ import Button from "../UI/Button";
 import styles from "./PCItem.module.css"
 
 const PCItem = (props) => {
-	const {item, changeItemHandler} = props;
+	const {item, changeItem, deleteItem} = props;
 
 	const [fullCost, setFullCost] = react.useState({price: item.price, count: item.count})
 	const [checkedPosition, setCheckedPosition] = react.useState(item.checked)
 
 	const checkboxHandle = (check) => {
 		setCheckedPosition(check);
-		changeItemHandler({...item, checked: check})
+		changeItem({...item, checked: check})
 	}
 
 	const fullCostHandle=(inputType, newValue)=> {
-		setFullCost({...fullCost, [inputType]: newValue})
-		changeItemHandler({...item, [inputType]: newValue})
+		newValue >=1 && setFullCost({...fullCost, [inputType]: newValue})
+		newValue >=1 && changeItem({...item, [inputType]: newValue})
 	}
+
 
 
 	return <>
@@ -37,9 +38,9 @@ const PCItem = (props) => {
 					<label><input type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
 												value={fullCost.count}/> шт.</label>
 				</div>
-				<div className={styles.buttons}>
-					<Button type="link" title="Перейти по ссылке"/>
-					<Button type="close" title="Удалить позицию"/>
+				<div className={styles.buttons} >
+					<Button type="link" title="Перейти по ссылке"  />
+					<Button type="close" title="Удалить позицию" action={()=>deleteItem(item.id)}/>
 				</div>
 			</div>
 		</div>

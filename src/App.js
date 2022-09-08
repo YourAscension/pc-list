@@ -35,9 +35,14 @@ function App() {
   const changeItemHandler = (innerItem) => {
     setItems([...items.map((item)=>item.id !==innerItem.id ? item : innerItem)])
   }
+
+  const deleteItemHandler = (id) => {
+
+    setItems(items.filter((item)=> item.id !== id))
+  }
   return (
     <div className="App" >
-      <PCList items = {items} changeItemHandler={changeItemHandler} />
+      <PCList items = {items} changeItem={changeItemHandler} deleteItem={deleteItemHandler} />
     </div>
   );
 }

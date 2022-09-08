@@ -16,9 +16,9 @@ const ButtonIcon = (props) => {
 }
 
 const Button = (props) => {
-	const {type, title} = props;
+	const {type, title, action} = props;
 	return (
-		<button className={styles[type]} title={title}>
+		<button onClick={action} className={styles[type]} title={title}>
 			<ButtonIcon type={type}/>
 		</button>
 	);
