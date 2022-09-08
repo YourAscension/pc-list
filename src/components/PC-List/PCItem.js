@@ -39,8 +39,8 @@ const PCItem = (props) => {
 												value={fullCost.count}/> шт.</label>
 				</div>
 				<div className={styles.buttons} >
-					<Button type="link" title="Перейти по ссылке"  />
-					<Button type="close" title="Удалить позицию" action={()=>deleteItem(item.id)}/>
+					<Button type="link" title={`Перейти по ссылке: ${item.link}`} action={()=>window.open(item.link)}  />
+					<Button type="close" title={`Удалить позицию: ${item.title}`} action={()=>deleteItem(item.id)}/>
 				</div>
 			</div>
 		</div>
