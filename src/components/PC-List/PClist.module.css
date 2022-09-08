@@ -24,8 +24,12 @@
     background-color: white;
     padding: 5px 20px;
 }
-
-.itemsHead p{
+.itemsHeadTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.itemsHeadTitle .title{
     margin: 10px 0;
     color: #0B5AA2;
     font-weight: bold;

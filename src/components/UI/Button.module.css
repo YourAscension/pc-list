@@ -14,21 +14,17 @@ button + button {
 
 .close > svg{
     fill: red;
-
 }
 .close:hover {
     background-color: red;
 }
 
 .close:hover svg {
-
     fill: white;
-
 }
 
 .link > svg{
     fill: #0B5AA2;
-
 }
 
 .link:hover {
@@ -36,7 +32,16 @@ button + button {
 }
 
 .link:hover svg {
-
     fill: white;
+}
+.add > svg{
+    fill: #00831d;
+}
 
+.add:hover {
+    background-color: #00831d;
+}
+
+.add:hover svg {
+    fill: white;
 }

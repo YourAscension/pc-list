@@ -1,9 +1,11 @@
 import react from 'react'
 import './App.css';
 import PCList from "./components/PC-List/PClist";
+import ModalWindow from "./components/UI/ModalWindow";
 
 
 function App() {
+  const [modalActive, setModalActive] = react.useState(false)
   const [items, setItems] = react.useState([{
     id: 1,
     title: 'Видеокарта RTX 3070',
@@ -40,12 +42,17 @@ function App() {
   }
 
   const deleteItemHandler = (id) => {
-
     setItems(items.filter((item)=> item.id !== id))
   }
+
+  const modalControlHandler = () => {
+    setModalActive(!modalActive)
+  }
+
   return (
     <div className="App" >
-      <PCList items = {items} changeItem={changeItemHandler} deleteItem={deleteItemHandler} />
+      <PCList items = {items} changeItem={changeItemHandler} deleteItem={deleteItemHandler} modalControl={modalControlHandler} />
+      <ModalWindow active={modalActive} setActive={setModalActive}/>
     </div>
   );
 }

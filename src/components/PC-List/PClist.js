@@ -1,12 +1,16 @@
 import PCItem from "./PCItem";
 import styles from "./PClist.module.css"
+import Button from "../UI/Button";
 
 function PClist(props) {
-	const {items, changeItem, deleteItem} = props;
+	const {items, changeItem, deleteItem, modalControl} = props;
 	return <div className={styles.container}>
 		<div className={styles.items}>
 			<div className={styles.itemsHead}>
-				<p>Комплектующие</p>
+				<div className={styles.itemsHeadTitle}>
+					<div className={styles.title}> Комплектующие</div>
+					<div className={styles.buttons}><Button type="add" title="Добавить позицию" action={modalControl}/></div>
+				</div>
 				<hr/>
 				<div className={styles.itemsBody}>
 					{
@@ -28,7 +32,7 @@ function PClist(props) {
 									}
 									return totalPrice;
 								}, 0)} рублей
-							</div>)|| <div className={styles.totalText}>Выберите хотя бы одну позицию</div> )
+							</div>) || <div className={styles.totalText}>Выберите хотя бы одну позицию</div>)
 					}
 				</div>
 			</div>

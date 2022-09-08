@@ -21,11 +21,11 @@ const PCItem = (props) => {
 
 
 	return <>
-		<div className={styles.item}>
+		<div className={styles.item} >
 			<div className={styles.itemTitle}>
 				<input className={styles.itemCheckbox} type="checkbox" onChange={() => checkboxHandle(!checkedPosition)}
 							 checked={checkedPosition}/>
-				<img className={styles.itemTitleImg} src={item.img} alt="logo"/>
+				<img className={styles.itemTitleImg} src={item.img} alt={item.title}/>
 				<div>
 					<div className={styles.itemTitleText}>{item.title}</div>
 					<div className={styles.itemSubTitleText}>{item.category}</div>
