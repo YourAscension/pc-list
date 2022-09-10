@@ -9,7 +9,7 @@ function PClist(props) {
 			<div className={styles.itemsHead}>
 				<div className={styles.itemsHeadTitle}>
 					<div className={styles.title}> Комплектующие</div>
-					<div className={styles.buttons}><Button type="add" title="Добавить позицию" action={modalControl}/></div>
+					<div className={styles.buttons}><Button type="add" tipTitle="Добавить позицию" action={modalControl}/></div>
 				</div>
 				<hr/>
 				<div className={styles.itemsBody}>

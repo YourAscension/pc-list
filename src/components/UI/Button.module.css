@@ -45,3 +45,14 @@ button + button {
 .add:hover svg {
     fill: white;
 }
+
+.submit {
+    background-color: #0B5AA2;
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.submit:hover {
+    opacity: 60%;
+}

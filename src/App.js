@@ -2,6 +2,7 @@ import react from 'react'
 import './App.css';
 import PCList from "./components/PC-List/PClist";
 import ModalWindow from "./components/UI/ModalWindow";
+import TextInput from "./components/UI/TextInput"
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       img: '../../public/images/image.jpg',
       link: "https://www.google.com",
       checked: false,
-      count: 2,
+      count: 1,
       price: 500,
     },
     {
@@ -52,7 +53,14 @@ function App() {
   return (
     <div className="App" >
       <PCList items = {items} changeItem={changeItemHandler} deleteItem={deleteItemHandler} modalControl={modalControlHandler} />
-      <ModalWindow active={modalActive} setActive={setModalActive}/>
+      <ModalWindow modalTitle="Комплектующие" active={modalActive} setActive={setModalActive}>
+        <TextInput labelText="Название" />
+        <TextInput labelText="Категория"/>
+        <TextInput labelText="Цена, руб."/>
+        <TextInput labelText="Количество"/>
+        <TextInput labelText="Ссылка на картинку"/>
+        <TextInput labelText="Ссылка в магазине" />
+      </ModalWindow>
     </div>
   );
 }

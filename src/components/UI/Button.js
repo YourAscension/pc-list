@@ -22,10 +22,11 @@ const ButtonIcon = (props) => {
 }
 
 const Button = (props) => {
-	const {type, title, action} = props;
+	const {children, type, tipTitle, action} = props;
 	return (
-		<button onClick={action} className={styles[type]} title={title}>
+		<button onClick={action} className={styles[type]} title={tipTitle}>
 			<ButtonIcon type={type}/>
+			{children}
 		</button>
 	);
 };

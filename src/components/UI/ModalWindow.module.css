@@ -15,7 +15,6 @@
     padding: 10px;
     border-radius: 10px;
     background-color: white;
-    max-width: 600px;
 }
 
 .modalEdge {
@@ -31,11 +30,10 @@
 }
 
 .modalContent {
-    margin: 8px 0;
+    margin: 2px 0;
 }
 
 .modalContent hr {
-    width: 100%;
     border: 1px solid #0B5AA2;
 }
 
@@ -44,3 +42,14 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.content {
+    padding: 10px 40px;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+}
+
+
+
+

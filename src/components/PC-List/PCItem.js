@@ -33,14 +33,14 @@ const PCItem = (props) => {
 			</div>
 			<div className={styles.controlsContainer}>
 				<div className={styles.controls}>
-					<label><input type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
+					<label><input className={styles.Iteminput} type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
 												value={fullCost.price}/> руб.</label>
-					<label><input type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
+					<label><input className={styles.Iteminput} type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
 												value={fullCost.count}/> шт.</label>
 				</div>
 				<div className={styles.buttons} >
-					<Button type="link" title={`Перейти по ссылке: ${item.link}`} action={()=>window.open(item.link)}  />
-					<Button type="close" title={`Удалить позицию: ${item.title}`} action={()=>deleteItem(item.id)}/>
+					<Button type="link" tipTitle={`Перейти по ссылке: ${item.link}`} action={()=>window.open(item.link)}  />
+					<Button type="close" tipTitle={`Удалить позицию: ${item.title}`} action={()=>deleteItem(item.id)}/>
 				</div>
 			</div>
 		</div>

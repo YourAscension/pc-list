@@ -73,14 +73,8 @@ label + label {
     margin-top: 10px;
 }
 
-input {
-    border: none;
-    border-bottom: 1px solid gray;
-    text-align: center;
-    padding: 5px;
+.Iteminput {
     max-width: 80px;
-    font-weight: bold;
-    outline: none;
 }
 
 input:hover, input:focus {
