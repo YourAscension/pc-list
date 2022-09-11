@@ -11,8 +11,7 @@ function PClist(props) {
 			: (<div className={styles.itemsNone}>Комплектующие отсутствуют</div>)
 	}
 
-	const totalPrice = () =>
-	{
+	const totalPrice = () => {
 		return items.length > 0 && (items.find((item) => item.checked === true)
 			&&
 			(<div className={styles.totalText}>
@@ -34,7 +33,12 @@ function PClist(props) {
 					<div className={styles.itemsHeadTitle}>
 						<div className={styles.title}>Комплектующие</div>
 						<div className="buttonsContainer">
-							<Button type="add" tipTitle="Добавить позицию" action={modalControlActions.modalControlActiveHandler}/>
+							<Button
+								icon="add"
+								type="addButton"
+								tipTitle="Добавить позицию"
+								onClick={()=>modalControlActions.modalControlActiveHandler()}
+							/>
 						</div>
 					</div>
 					<hr/>

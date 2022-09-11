@@ -25,16 +25,14 @@
 
 .buttonContainer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row-reverse;
     align-items: center;
 }
 
-.modalContent {
-    margin: 2px 0;
-}
 
-.modalContent hr {
+.modalDivider {
     border: 1px solid #0B5AA2;
+    margin: 5px 0;
 }
 
 .modalTitle {
@@ -43,8 +41,8 @@
     font-size: 20px;
 }
 
-.content {
-    padding: 10px 30px;
+.modalContent {
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 30px;

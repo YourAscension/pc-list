@@ -18,8 +18,6 @@ const PCItem = (props) => {
 		newValue >=1 && itemActions.changeItemHandler({...item, [inputType]: newValue})
 	}
 
-
-
 	return <>
 		<div className={styles.item} >
 			<div className={styles.itemTitle}>
@@ -35,12 +33,22 @@ const PCItem = (props) => {
 				<div className={styles.controls}>
 					<label><input type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
 												value={fullCost.price}/> руб.</label>
-					<label><input type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
+					<label><input  type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
 												value={fullCost.count}/> шт.</label>
 				</div>
-				<div className={styles.buttons} >
-					<Button type="link" tipTitle={`Перейти по ссылке: ${item.link}`} action={()=>window.open(item.link)}  />
-					<Button type="close" tipTitle={`Удалить позицию: ${item.title}`} action={()=>itemActions.deleteItemByIdHandler(item.id)}/>
+				<div className={styles.buttons}>
+					<Button
+						icon="link"
+						type="linkButton"
+						tipTitle={`Перейти по ссылке: ${item.link}`}
+						onClick={()=>window.open(item.link)}
+					/>
+					<Button
+						icon="delete"
+						type="deleteButton"
+						tipTitle={`Удалить позицию: ${item.title}`}
+						onClick={()=>itemActions.deleteItemByIdHandler(item.id)}
+					/>
 				</div>
 			</div>
 		</div>

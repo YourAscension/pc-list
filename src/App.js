@@ -1,14 +1,70 @@
 import react from 'react'
 import './App.css';
-import PCList from "./components/PC-List/PClist";
+import {findMaxValueInArrayOfObjects} from "./common"
+import PCList from "./components/PCList/PClist";
 import ModalWindow from "./components/UI/ModalWindow";
-import React from "react";
 
 
 function App() {
 	const [modalActive, setModalActive] = react.useState(false)
 
-	const defaultItemObjectModel = ["id", "title", "category", "img", "link", "checked", "count", "price"];
+	const defaultItemObjectModel = [
+		{
+			propertyName: "id",
+			type: "number",
+			visible: false,
+			isKey: true,
+			labelName: "Идентификатор",
+		},
+		{
+			propertyName: "title",
+			type: "string",
+			visible: true,
+			isKey: false,
+			labelName: "Название",
+		},
+		{
+			propertyName: "category",
+			type: "string",
+			visible: true,
+			isKey: false,
+			labelName: "Категория",
+		},
+		{
+			propertyName: "img",
+			type: "string",
+			visible: true,
+			isKey: false,
+			labelName: "Ссылка на картинку",
+		}, {
+			propertyName: "link",
+			type: "string",
+			visible: true,
+			isKey: false,
+			labelName: "Ссылка на товар",
+		},
+		{
+			propertyName: "checked",
+			type: "boolean",
+			visible: false,
+			isKey: false,
+			labelName: null,
+		},
+		{
+			propertyName: "count",
+			type: "number",
+			visible: true,
+			isKey: false,
+			labelName: "Количество",
+		},
+		{
+			propertyName: "price",
+			type: "number",
+			visible: true,
+			isKey: false,
+			labelName: "Цена",
+		},
+	];
 	const [items, setItems] = react.useState([{
 		id: 1,
 		title: 'Видеокарта RTX 3070',
@@ -40,44 +96,44 @@ function App() {
 			price: 666,
 		}])
 
-	const changeItemHandler = (innerItem) => {
-		setItems([...items.map((item) => item.id !== innerItem.id ? item : innerItem)])
+
+	const itemHandlers = {
+		changeItemHandler(newItem) {
+			setItems([...items.map((item) => item.id !== newItem.id ? item : newItem)])
+		},
+		deleteItemByIdHandler(id) {
+			setItems(items.filter((item) => item.id !== id))
+		},
+		addItemHandler(newItem) {
+			setItems(
+				[
+					...items,
+					{
+						...newItem,
+						id: 1+findMaxValueInArrayOfObjects(items, "id")
+					}
+				])
+		}
 	}
 
-	const deleteItemHandler = (id) => {
-		setItems(items.filter((item) => item.id !== id))
-	}
-
-	console.log(items.reduce((prevItem, currentItem) => {
-		return prevItem.id > currentItem.id
-			? prevItem.id
-			: currentItem.id
-	}, 0) + 1)
-
-
-	const addItemHandler = (innerItem) => {
-		setItems([...items, {
-			...innerItem, id: items.reduce((prevItem, currentItem) => {
-				return prevItem.id > currentItem.id
-					? prevItem.id
-					: currentItem.id
-			}, 0) + 1
-		}])
-	}
-
-	const modalControlHandler = () => {
-		setModalActive(!modalActive)
+	const modalControlHandlers = {
+		modalControlActiveHandler() {
+			setModalActive(!modalActive)
+		}
 	}
 
 
 	return (
 		<div className="App">
 			<div className="container">
-				<PCList items={items} changeItem={changeItemHandler} deleteItem={deleteItemHandler}
-								modalControl={modalControlHandler}/>
+				<PCList items={items} itemActions={itemHandlers}
+								modalControlActions={modalControlHandlers}/>
 			</div>
-			<ModalWindow itemTemplate={defaultItemObjectModel} addItem={addItemHandler} modalTitle="Комплектующие"
-									 active={modalActive} setActive={setModalActive}/>
+			<ModalWindow itemModels={defaultItemObjectModel}
+									 itemActions={itemHandlers}
+									 modalActions={modalControlHandlers}
+									 title="Комплектующие"
+									 isActive={modalActive}/>
 		</div>
 	);
 }

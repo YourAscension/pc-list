@@ -12,47 +12,47 @@ button + button {
 }
 
 
-.close > svg{
+.deleteButton > svg{
     fill: red;
 }
-.close:hover {
+.deleteButton:hover {
     background-color: red;
 }
 
-.close:hover svg {
+.deleteButton:hover svg {
     fill: white;
 }
 
-.link > svg{
+.linkButton > svg{
     fill: #0B5AA2;
 }
 
-.link:hover {
+.linkButton:hover {
     background-color: #0B5AA2;
 }
 
-.link:hover svg {
+.linkButton:hover svg {
     fill: white;
 }
-.add > svg{
+.addButton > svg{
     fill: #00831d;
 }
 
-.add:hover {
+.addButton:hover {
     background-color: #00831d;
 }
 
-.add:hover svg {
+.addButton:hover svg {
     fill: white;
 }
 
-.submit {
+.primaryButton {
     background-color: #0B5AA2;
     color: white;
     padding: 5px 10px;
     font-size: 16px;
 }
 
-.submit:hover {
+.primaryButton:hover {
     opacity: 60%;
 }
