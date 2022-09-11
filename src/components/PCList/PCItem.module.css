@@ -73,9 +73,6 @@ label + label {
     margin-top: 10px;
 }
 
-.Iteminput {
-    max-width: 80px;
-}
 
 input:hover, input:focus {
     border-bottom: 1px solid #0B5AA2;

@@ -3,19 +3,19 @@ import Button from "../UI/Button";
 import styles from "./PCItem.module.css"
 
 const PCItem = (props) => {
-	const {item, changeItem, deleteItem} = props;
+	const {item, itemActions} = props;
 
 	const [fullCost, setFullCost] = react.useState({price: item.price, count: item.count})
 	const [checkedPosition, setCheckedPosition] = react.useState(item.checked)
 
 	const checkboxHandle = (check) => {
 		setCheckedPosition(check);
-		changeItem({...item, checked: check})
+		itemActions.changeItemHandler({...item, checked: check})
 	}
 
 	const fullCostHandle=(inputType, newValue)=> {
 		newValue >=1 && setFullCost({...fullCost, [inputType]: newValue})
-		newValue >=1 && changeItem({...item, [inputType]: newValue})
+		newValue >=1 && itemActions.changeItemHandler({...item, [inputType]: newValue})
 	}
 
 
@@ -33,14 +33,14 @@ const PCItem = (props) => {
 			</div>
 			<div className={styles.controlsContainer}>
 				<div className={styles.controls}>
-					<label><input className={styles.Iteminput} type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
+					<label><input type="number" onChange={(e) => fullCostHandle ("price", e.target.value) }
 												value={fullCost.price}/> руб.</label>
-					<label><input className={styles.Iteminput} type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
+					<label><input type="number" onChange={(e) => fullCostHandle ("count", e.target.value)}
 												value={fullCost.count}/> шт.</label>
 				</div>
 				<div className={styles.buttons} >
 					<Button type="link" tipTitle={`Перейти по ссылке: ${item.link}`} action={()=>window.open(item.link)}  />
-					<Button type="close" tipTitle={`Удалить позицию: ${item.title}`} action={()=>deleteItem(item.id)}/>
+					<Button type="close" tipTitle={`Удалить позицию: ${item.title}`} action={()=>itemActions.deleteItemByIdHandler(item.id)}/>
 				</div>
 			</div>
 		</div>

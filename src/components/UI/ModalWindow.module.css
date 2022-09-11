@@ -44,10 +44,11 @@
 }
 
 .content {
-    padding: 10px 40px;
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*flex-wrap: wrap;*/
+    padding: 10px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
 }
 
 
